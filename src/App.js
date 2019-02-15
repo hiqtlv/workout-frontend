@@ -5,8 +5,8 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className="container">
+        <header className="header">
           <p>My Workouts</p>
           <Sessions/>
         </header>
