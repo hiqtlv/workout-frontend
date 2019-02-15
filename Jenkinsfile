@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-	        sh 'docker ps'
+	        sh '/var/run/docker ps'
                 sh 'npm install' 
             }
         }
