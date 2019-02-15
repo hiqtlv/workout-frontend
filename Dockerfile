@@ -9,7 +9,8 @@ ENV NPM_CONFIG_LOGLEVEL warn
 COPY . .
 
 # Build for production.
-RUN npm run build --production
+RUN npm install
+RUN npm run build
 
 # Install `serve` to run the application.
 RUN npm install -g serve
