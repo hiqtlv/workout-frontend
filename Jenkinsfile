@@ -12,12 +12,12 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'docker ps'
-                sh 'npm install' 
+                echo 'npm install' 
             }
         }
         stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh'
+                echo './jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
