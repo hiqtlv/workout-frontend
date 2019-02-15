@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'jenkinssci/blueocean' 
+            image 'jenkinsci/blueocean' 
             args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock'  
         }
     }
@@ -23,7 +23,7 @@ pipeline {
         stage('Deliver') {
             agent {
                docker {
-               image 'jenkinssci/blueocean' 
+               image 'jenkinsci/blueocean' 
                args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock'
                }
              }
