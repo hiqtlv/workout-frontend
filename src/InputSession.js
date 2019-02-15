@@ -6,14 +6,14 @@ import 'react-dropdown/style.css'
 
 class InputSession extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             selectedDate: new Date(),
             duration: "",
             distance: "",
-            type: ""
+            type: "Running"
         };
     }
 
@@ -33,12 +33,19 @@ class InputSession extends Component {
         })
     }
 
-    handleDatePicker(e){
-
+    handleDatePicker = (e) => {
+        this.setState( {selectedDate : e});
     }
 
-    handleTypeChange(e){
-        this.setState
+    handleTypeChange = (e) => {
+        this.setState( { type : e.value});
+    }
+    handleChange = (e) => {
+        const target = e.target;
+        const name = target.name;
+        const value = target.value;
+        this.setState({[name]: value});
+        console.log(this.state);
     }
 
     render() {
@@ -46,11 +53,11 @@ class InputSession extends Component {
         return (
             <div>
                 <form>
-                <label>Activity type </label><Dropdown options={types} value={"Running"} onChange={this.handleTypeChange}/>
-                <label>Distance </label><input type="text" className="form-control"></input><br/>
-                <label>Duration </label><input type="text" className="form-control"></input><br/>
-                <label>Date </label><br/><DatePicker selected={this.state.selectedDate} onChange={this.handleDatePicker}/><br/><br/>
-                <button onClick={this.postToRest}>Submit</button><br/><br/>
+                <label>Activity type </label><Dropdown options={types} value={this.state.type} onChange={this.handleTypeChange} name="type"/>
+                <label>Distance </label><input type="number" name="distance" value={this.state.distance} className="form-control" onChange={this.handleChange}></input><br/>
+                <label>Duration </label><input type="number" name="duration" value={this.state.duration} className="form-control"onChange={this.handleChange}></input><br/>
+                <label>Date </label><br/><DatePicker name="date" selected={this.state.selectedDate} onChange={this.handleDatePicker}/><br/><br/>
+                <button onClick={this.postToRest} className="btn btn-primary">Submit</button><br/><br/>
                 </form>
             </div>
         );
