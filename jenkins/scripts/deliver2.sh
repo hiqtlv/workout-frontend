@@ -12,6 +12,6 @@ JENKINS_NODE_COOKIE=dontkillme docker run \
   --name workout \
   -v ${PWD}:/usr/src/app \
   -v /usr/src/app/node_modules \
-  -p 3000:3000 \
+  -p 5000:5000 \
   --rm \
   workout
