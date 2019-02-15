@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'jenkinsci/blueocean' 
-            args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /jenkins_home:/var/jenkins_home'  
+            args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock'  
         }
     }
     environment {
