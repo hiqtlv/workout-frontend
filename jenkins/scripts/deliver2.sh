@@ -1,6 +1,8 @@
 echo "starting awesome react docker deployment script"
 echo "start by building new image"
 
+ls /usr/src/app/
+
 docker build -t workout .
 
 echo "start new container"
