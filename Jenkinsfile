@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                docker ps
+                sh 'docker ps'
                 echo 'npm install' 
             }
         }
