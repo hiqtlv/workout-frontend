@@ -11,7 +11,6 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'docker ps'
                 echo 'npm install' 
             }
         }
@@ -22,7 +21,6 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                echo "starting deliver2.sh"
                 sh './jenkins/scripts/deliver2.sh'
             }
         }
