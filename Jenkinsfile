@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'docker ps'
+                docker ps
                 echo 'npm install' 
             }
         }
@@ -24,10 +24,11 @@ pipeline {
             agent {
                docker {
                image 'jenkinsci/blueocean' 
-               args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock'
+               args '-v /var/run/docker.sock:/var/run/docker.sock'
                }
              }
             steps {
+                echo "starting deliver2.sh"
                 sh './jenkins/scripts/deliver2.sh'
             }
         }
