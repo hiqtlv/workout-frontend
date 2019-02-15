@@ -8,7 +8,7 @@ docker build -t workout .
 
 echo "start new container"
 
-JENKINS_NODE_COOKIE=dontkillme docker run \
+JENKINS_NODE_COOKIE=dontkillme docker run -d  \
   --name workout \
   -v ${PWD}:/usr/src/app \
   -v /usr/src/app/node_modules \
