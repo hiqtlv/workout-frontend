@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'jenkinsci/blueocean' 
-            args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock'  
+            args '-p 3000:3000'  
         }
     }
     environment {
@@ -11,7 +11,6 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-	        sh 'docker ps'
                 sh 'npm install' 
             }
         }
@@ -21,6 +20,12 @@ pipeline {
             }
         }
         stage('Deliver') {
+            agent {
+                docker {
+                    image 'jenkinsci/blueocean'
+                    args '-p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock'
+                 }
+            }
             steps {
                 sh './jenkins/scripts/deliver2.sh'
             }
