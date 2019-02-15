@@ -27,7 +27,7 @@ class ListSessions extends Component {
     let table = <div></div>;
 
     if(this.state.sessions.length > 0){
-      table = <table className='table'><tbody>
+      table = <table className='table table-striped' ><tbody>
         <tr><th>Type</th><th>Duration</th><th>Distance</th><th>Date</th></tr>
       {sessionList}
       </tbody></table>

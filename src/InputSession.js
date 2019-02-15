@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import Dropdown from 'react-dropdown';
+import 'react-datepicker/dist/react-datepicker.css'
+import 'react-dropdown/style.css'
 
 class InputSession extends Component {
 
@@ -6,8 +10,10 @@ class InputSession extends Component {
         super();
 
         this.state = {
-            title: "question from react",
-            description: "question text"
+            selectedDate: new Date(),
+            duration: "",
+            distance: "",
+            type: ""
         };
     }
 
@@ -27,11 +33,25 @@ class InputSession extends Component {
         })
     }
 
+    handleDatePicker(e){
+
+    }
+
+    handleTypeChange(e){
+        this.setState
+    }
+
     render() {
+        const types = ['Running', 'Biking', 'Swiming'];
         return (
             <div>
-                <p>Inputform place holder</p>
-                <button onClick={this.postToRest}>Submit</button>
+                <form>
+                <label>Activity type </label><Dropdown options={types} value={"Running"} onChange={this.handleTypeChange}/>
+                <label>Distance </label><input type="text" className="form-control"></input><br/>
+                <label>Duration </label><input type="text" className="form-control"></input><br/>
+                <label>Date </label><br/><DatePicker selected={this.state.selectedDate} onChange={this.handleDatePicker}/><br/><br/>
+                <button onClick={this.postToRest}>Submit</button><br/><br/>
+                </form>
             </div>
         );
     }
