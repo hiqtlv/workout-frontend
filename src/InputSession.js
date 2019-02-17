@@ -17,20 +17,21 @@ class InputSession extends Component {
         };
     }
 
-    postToRest(){
-        alert("post to be implemented...");
-
-        fetch('http://localhost:8080/questions', {
+    postToRest = (e) => {
+        
+        fetch('http://localhost:8081/session', {
+        crossDomain:true,
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            title: 'yourValue',
-            description: 'yourOtherValue',
-        })
-        })
+            duration: this.state.duration,
+            distance: this.state.distance,
+            date: this.state.selectedDate,
+            type: this.state.type}),
+        });
     }
 
     handleDatePicker = (e) => {
@@ -44,20 +45,20 @@ class InputSession extends Component {
         const target = e.target;
         const name = target.name;
         const value = target.value;
+
         this.setState({[name]: value});
-        console.log(this.state);
     }
 
     render() {
         const types = ['Running', 'Biking', 'Swiming'];
         return (
             <div>
-                <form>
+                <form onSubmit={this.postToRest}>
                 <label>Activity type </label><Dropdown options={types} value={this.state.type} onChange={this.handleTypeChange} name="type"/>
-                <label>Distance </label><input type="number" name="distance" value={this.state.distance} className="form-control" onChange={this.handleChange}></input><br/>
-                <label>Duration </label><input type="number" name="duration" value={this.state.duration} className="form-control"onChange={this.handleChange}></input><br/>
+                <label>Distance (m) </label><input type="number" name="distance" value={this.state.distance} className="form-control" onChange={this.handleChange} required></input><br/>
+                <label>Duration (min) </label><input type="number" name="duration" value={this.state.duration} className="form-control"onChange={this.handleChange} required></input><br/>
                 <label>Date </label><br/><DatePicker name="date" selected={this.state.selectedDate} onChange={this.handleDatePicker}/><br/><br/>
-                <button onClick={this.postToRest} className="btn btn-primary">Submit</button><br/><br/>
+                <button className="btn btn-primary">Submit</button><br/><br/>
                 </form>
             </div>
         );
