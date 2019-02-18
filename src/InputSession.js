@@ -18,7 +18,7 @@ class InputSession extends Component {
     }
 
     postToRest = (e) => {
-        
+        e.preventDefault();
         fetch('http://localhost:8081/session', {
         crossDomain:true,
         method: 'POST',
