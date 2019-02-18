@@ -32,6 +32,11 @@ class InputSession extends Component {
             date: this.state.selectedDate,
             type: this.state.type}),
         });
+
+        this.setState({
+            distance: "",
+            duration: ""
+        });
     }
 
     handleDatePicker = (e) => {

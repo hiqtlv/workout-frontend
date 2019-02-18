@@ -22,7 +22,7 @@ class ListSessions extends Component {
   }
 
   render(){
-    return(<SessionTable data={this.state.sessions}/>)
+    return(<SessionTable type="sessionList" data={this.state.sessions}/>)
   }
 }
 
